@@ -3,10 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                 sh "hostname"
-                 sh "cd / "
-                 sh 'echo $PATH'
-                 free
+                 sh "/root/script/hello.sh"
             }
         }     
     }
