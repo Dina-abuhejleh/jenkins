@@ -5,6 +5,7 @@ pipeline {
             steps {
                  sh "hostname"
                  sh 'echo $PATH'
+                 sh 'free'
             }
         }     
     }
