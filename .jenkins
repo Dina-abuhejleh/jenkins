@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Build') {
             steps { 
-                 bash 'chmod 777 /root/script/hello.sh'
                  sh '/root/script/hello.sh'
             }
         }     
