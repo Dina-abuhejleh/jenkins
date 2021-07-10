@@ -6,7 +6,7 @@ pipeline {
                  sh "hostname"
                  sh "cd / "
                  sh 'echo $PATH'
-                 /usr/bin/free
+                 free
             }
         }     
     }
