@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                  sh "hostname"
-                 sh '/usr/bin/free -m'
+                 sh '/usr/bin/free free -m'
             }
         }     
     }
