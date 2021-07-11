@@ -3,6 +3,7 @@ pipeline {
     environment {
         memory =sh(returnStdout: true, script: "free -m | awk 'NR==2{printf \"%.2f\",\$3*100/\$2}'")
         hostname =sh(returnStdout: true, script: "hostname")
+        EMAIL_TO = 'deena.ah26@gmail.com'
         
     }
     stages {
@@ -17,4 +18,10 @@ pipeline {
             }
         }     
     }
+    post {
+     failure {
+         emailext body: 'Check console output at $memory to view the results.${BUILD_LOG, maxLines=100, escapeHtml=false}', 
+                    to: "${EMAIL_TO}", 
+                    subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+     
 }
