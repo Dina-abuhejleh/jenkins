@@ -8,9 +8,11 @@ pipeline {
           
         stage('Build') {
             steps {
-               if (env.memory > 80) { 
-                 echo "Running ${env.memory}"
-               }
+                script {
+                    if (env.memory > 80) { 
+                        echo "Running ${env.memory}"
+                    }
+                }    
             }
         }     
     }
