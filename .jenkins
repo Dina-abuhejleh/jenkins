@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps { 
                  sh 'hostname'
-                 sh "free -m | awk \'NR==2{printf \"%s MB (%.2f%%)\",$3,$3*100/$2}\'"
+                 sh "free -m | awk 'NR==2{printf \"%s MB (%.2f%%)\",${3},${3}*100/${2}}'"
                  echo "Running ${env.BUILD_ID}"
             }
         }     
