@@ -6,7 +6,7 @@ pipeline {
                  sh 'hostname'
                  sh 'free -m'
                  echo "Running ${env.BUILD_ID}"
-                 sh 'sudo whoami'
+                 sh 'whoami'
             }
         }     
     }
