@@ -4,7 +4,7 @@ pipeline {
            stage("set variables"){
                steps{
                    script{
-                       env.city="dee"
+                       env.city=sh "free -m | awk 'NR==2{printf \"%.2f%%\",\$3*100/\$2}'"
                    }
                }
            }
@@ -14,6 +14,7 @@ pipeline {
                  sh 'free -m'
                  echo "Running ${env.BUILD_ID}"
                  sh 'w'
+                 echo ${env.city}
             }
         }     
     }
