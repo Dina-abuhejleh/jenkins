@@ -3,14 +3,14 @@ pipeline {
     environment {
         memory =sh(returnStdout: true, script: "free -m | awk 'NR==2{printf \"%.2f\",\$3*100/\$2}'")
         hostname =sh(returnStdout: true, script: "hostname")
-        echo "Float.valueOf(env.memory)"
+        
     }
     stages {
           
         stage('Build') {
             steps {
                 script {
-                    if (Float.valueOf(env.memory) > 80.0) { 
+                    if (Float.valueOf(env.memory) < 80.0) { 
                         echo "Running ${env.memory}"
                     }
                 }    
