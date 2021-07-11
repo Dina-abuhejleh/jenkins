@@ -1,8 +1,15 @@
 pipeline {
     agent any
     stages {
+           stage("set variables"){
+               steps{
+                   script{
+                       env.city="dee"
+                   }
+               }
+           }
         stage('Build') {
-            steps { 
+            steps {
                  sh 'hostname'
                  sh 'free -m'
                  echo "Running ${env.BUILD_ID}"
