@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    if (Integer.parseInt(env.memory) > 80) { 
+                    if (Float.parseFloat(env.memory) > 80.0) { 
                         echo "Running ${env.memory}"
                     }
                 }    
