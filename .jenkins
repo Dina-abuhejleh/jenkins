@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        memory =sh(returnStdout: true, script: "free -m | awk 'NR==2{\$3*100/\$2}'")
+        memory =sh(returnStdout: true, script: "free -m | awk 'NR==2{printf \"%.2f\",\$3*100/\$2}'")
         hostname =sh(returnStdout: true, script: "hostname")
     }
     stages {
@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    if (env.memory > 80) { 
+                    if (Integer.parseInt(env.memory) > 80) { 
                         echo "Running ${env.memory}"
                     }
                 }    
