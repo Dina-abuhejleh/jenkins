@@ -1,17 +1,12 @@
 pipeline {
-    agent {
-        docker {
-            image 'jenkins/jenkins'
-            args '-u root --privileged'
-        }
-}
+    agent any
     stages {
         stage('Build') {
             steps { 
                  sh 'hostname'
                  sh 'free -m'
                  echo "Running ${env.BUILD_ID}"
-                 sh 'whoami'
+                 sh 'sudo whoami'
             }
         }     
     }
