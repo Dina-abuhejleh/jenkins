@@ -1,8 +1,8 @@
 pipeline {
     agent {
-      docker {
-        image 'jenkins/jenkins'
-        args '-u root --privileged'
+        docker {
+            image 'jenkins/jenkins'
+            args '-u root --privileged'
         }
 }
     stages {
