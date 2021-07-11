@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     if (Float.valueOf(env.memory) < 80.0) { 
-                        echo "Running ${env.memory}"
+                        error 'Test error'
                     }
                 }    
             }
