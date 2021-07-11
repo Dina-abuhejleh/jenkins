@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    if (Float.valueOf(env.memory) < 80.0) { 
+                    if (Float.valueOf(env.memory) > 80.0) { 
                         error 'env.memory'
                     }
                 }    
