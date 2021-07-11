@@ -14,7 +14,7 @@ pipeline {
                  sh 'free -m'
                  echo "Running ${env.BUILD_ID}"
                  sh 'w'
-                 echo "${memory}"
+                 sh echo "$memory"
             }
         }     
     }
