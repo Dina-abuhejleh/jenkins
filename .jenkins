@@ -30,7 +30,7 @@ pipeline {
               b: {
               
                
-               echo "FILES_LIST : ${FILES_LIST}"
+               echo "FILES_LIST : ${env.FILES_LIST}"
               }
               )
         }
