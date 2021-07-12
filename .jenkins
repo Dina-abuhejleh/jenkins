@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh "echo 'memory usage = ${env.memory}, hostname = ${env.hostname}, users info = ${env.users}'  >> ${env.BUILD_ID}.txt"
+                    sh "echo 'memory usage = ${env.memory}, hostname = ${env.hostname}, users info = ${env.users}'  >> ${env.BUILD_ID}.tar.gz"
                     if (Float.valueOf(env.memory) > 80.0) { 
                         error 'env.memory'
                     } 
