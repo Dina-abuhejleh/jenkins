@@ -28,10 +28,11 @@ pipeline {
                sh 'env'
               },
               b: {
-              
-               
                echo "FILES_LIST : ${env.FILES_LIST}"
               }
+              c: {
+               env.EXECUTOR_NUMBER=2
+               echo ${env.EXECUTOR_NUMBER}
               )
         }
  }
