@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh "echo ${env.memory}, ${env.hostname}, ${env.users}  >> ${env.BUILD_ID}.txt"
+                    sh "echo '${env.memory}, ${env.hostname}, ${env.users}'  >> ${env.BUILD_ID}.txt"
                     if (Float.valueOf(env.memory) > 80.0) { 
                         error 'env.memory'
                     } 
