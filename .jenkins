@@ -5,6 +5,7 @@ pipeline {
         hostname =sh(returnStdout: true, script: "hostname")
         users =sh(returnStdout: true, script: "w")
         EMAIL_TO = 'deena.ah26@gmail.com'
+        FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
         
     }
     stages {
@@ -28,7 +29,7 @@ pipeline {
               },
               b: {
               
-               FILES_LIST = sh (script: "ls   '${env.HUDSON_HOME}'", returnStdout: true).trim()
+               
                echo "FILES_LIST : ${FILES_LIST}"
               }
               )
