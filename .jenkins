@@ -32,7 +32,7 @@ pipeline {
                echo "FILES_LIST : ${env.FILES_LIST}"
               },
               c: {
-               env.EXECUTOR_NUMBER=3
+               EXECUTOR_NUMBER=3
                echo "${env.EXECUTOR_NUMBER}"
               }
               )
