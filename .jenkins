@@ -32,7 +32,7 @@ pipeline {
               },
               c: {
                env.EXECUTOR_NUMBER=2
-               echo "${env.EXECUTOR_NUMBER}"
+                 echo "${env.EXECUTOR_NUMBER}"
               }
               )
         }
