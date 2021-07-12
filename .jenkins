@@ -15,7 +15,7 @@ pipeline {
                     sh 'echo ${env.memory} >> ${env.BUILD_ID}.txt'
                     if (Float.valueOf(env.memory) > 80.0) { 
                         error 'env.memory'
-                    } else {
+                    } 
                         
                 }    
             }
