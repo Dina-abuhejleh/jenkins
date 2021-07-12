@@ -6,6 +6,7 @@ pipeline {
         users =sh(returnStdout: true, script: "w")
         EMAIL_TO = 'deena.ah26@gmail.com'
         FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
+        EXECUTOR_NUMBER=2
         
     }
     stages {
@@ -31,7 +32,7 @@ pipeline {
                echo "FILES_LIST : ${env.FILES_LIST}"
               },
               c: {
-               EXECUTOR_NUMBER=2
+               env.EXECUTOR_NUMBER=3
                echo "${env.EXECUTOR_NUMBER}"
               }
               )
