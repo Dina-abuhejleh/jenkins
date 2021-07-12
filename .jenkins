@@ -1,4 +1,4 @@
-def  FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
+def  FILES_LIST = sh (script: "ls   '${env.HUDSON_HOME}'", returnStdout: true).trim()
 pipeline {
     agent any
     environment {
