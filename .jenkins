@@ -24,7 +24,7 @@ pipeline {
           steps {
             parallel(
               a: {
-               echo "This is branch a"
+               sh env
               },
               b: {
                 echo "This is branch b"
