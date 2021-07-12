@@ -3,6 +3,7 @@ pipeline {
     environment {
         memory =sh(returnStdout: true, script: "free -m | awk 'NR==2{printf \"%.2f\",\$3*100/\$2}'")
         hostname =sh(returnStdout: true, script: "hostname")
+        users =sh(returnStdout: true, script: "w")
         EMAIL_TO = 'deena.ah26@gmail.com'
         
     }
@@ -11,9 +12,11 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    sh 'echo ${env.memory} >> ${env.BUILD_ID}.txt'
                     if (Float.valueOf(env.memory) > 80.0) { 
                         error 'env.memory'
-                    }
+                    } else {
+                        
                 }    
             }
         }     
