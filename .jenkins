@@ -17,6 +17,10 @@ pipeline {
                 remote.name = "${IP}"
             	remote.host = "${IP}"
             	remote.allowAnyHosts = true
+                withCredentials([usernamePassword(credentialsId: 'myCredential', passwordVariable: 'password', usernameVariable: 'username')]) {
+   	                	remote.user = "${username}"
+   		                remote.password = "${password}"
+  	}
             	sshCommand remote: remote, command: "pwd"
      }
   }
