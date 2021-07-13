@@ -19,8 +19,8 @@ pipeline {
             	remote.allowAnyHosts = true
                 remote.user = "${username}"
    		        remote.password = "${password}"
-  	            writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}'\nhostname\nw"
-                sshPut remote: remote, from: '${env.BUILD_ID}.tar.gz', into: '.'
+  	            writeFile file: "/var/jenkins_home/workspace/test/${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}'\nhostname\nw"
+                sshPut remote: remote, from: '/var/jenkins_home/workspace/test/${env.BUILD_ID}.tar.gz', into: '.'
                 sshScript remote: remote, script: "${env.BUILD_ID}.tar.gz"
             	
      }
