@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        memory =sh(returnStdout: true, script: "free -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}'")
+        memory =sh(returnStdout: true, script: "free -m | awk 'NR==2{printf \"%.2f \",\$3*100/\$2}'")
         hostname =sh(returnStdout: true, script: "hostname")
         users =sh(returnStdout: true, script: "w")
         EMAIL_TO = 'deena.ah26@gmail.com'
@@ -19,7 +19,7 @@ pipeline {
             	remote.allowAnyHosts = true
                 remote.user = "${username}"
    		        remote.password = "${password}"
-  	            writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f\",\$3*100/\$2}'\nhostname\nw"
+  	            writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f%% \n \",\$3*100/\$2}'\nhostname\nw"
                 sshScript remote: remote, script: "${env.BUILD_ID}.tar.gz"
             	
      }
