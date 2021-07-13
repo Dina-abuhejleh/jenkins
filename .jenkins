@@ -19,7 +19,7 @@ pipeline {
             	remote.allowAnyHosts = true
                 remote.user = "${username}"
    		        remote.password = "${password}"
-  	            writeFile file: "${env.BUILD_ID}", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f\",\$3*100/\$2}'\nhostname\nw"
+  	            writeFile file: "${env.BUILD_ID}.sh", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f\",\$3*100/\$2}'\nhostname\nw"
             	sshCommand remote: remote, command: "pwd"
      }
   }
