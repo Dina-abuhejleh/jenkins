@@ -10,7 +10,16 @@ pipeline {
         
     }
     stages {
-          
+        stage('SSH') {
+          steps {
+           script {                 
+             	def remote = [:]
+            	remote.host = "${IP}"
+            	remote.allowAnyHosts = true
+            	sshCommand remote: remote, command: "pwd"
+     }
+  }
+} 
         stage('Build') {
             steps {
                 script {
