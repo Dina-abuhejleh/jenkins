@@ -19,8 +19,9 @@ pipeline {
             	remote.allowAnyHosts = true
                 remote.user = "${username}"
    		        remote.password = "${password}"
-  	            writeFile file: "${env.BUILD_ID}.sh", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f\",\$3*100/\$2}'\nhostname\nw"
-            	sshCommand remote: remote, command: "pwd"
+  	            writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f\",\$3*100/\$2}'\nhostname\nw"
+            	sshGet remote: remote, from: '${env.BUILD_ID}.tar.gz', into: '${env.BUILD_ID}.sh', override: true
+                sh "./{env.BUILD_ID}.sh"
      }
   }
 } 
