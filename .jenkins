@@ -19,7 +19,7 @@ pipeline {
             	remote.allowAnyHosts = true
                 remote.user = "${username}"
    		        remote.password = "${password}"
-  	            writeFile file: ${env.BUILD_ID}, text: 'ls'
+  	            writeFile file: "${env.BUILD_ID}", text: 'ls'
             	sshCommand remote: remote, command: "pwd"
      }
   }
