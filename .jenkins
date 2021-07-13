@@ -22,19 +22,16 @@ pipeline {
                 sshScript remote: remote, script: "${env.BUILD_ID}.tar.gz"
                 def memory = sshCommand remote: remote, command: "free -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}'"
                 echo "Result: " + memory
+                 if (memory > 80.0) { 
+                        error 'memory'
+                    } 
+                
                 
             	
      }
   }
 } 
-        stage('Check') {
-          steps {
-           script {
-                def memory = sshCommand remote: remote, command: "free -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}'"
-                echo "Result: " + memory
-           }
-          }
-           } 
+        
                 
         
         stage('Build') {
