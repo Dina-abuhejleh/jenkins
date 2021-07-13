@@ -21,7 +21,7 @@ pipeline {
    		        remote.password = "${password}"
   	            writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}'\nhostname\nw"
                 sshScript remote: remote, script: "${env.BUILD_ID}.tar.gz"
-                def commandResult = sshCommand remote: remote, command: "free -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2"
+                def commandResult = sshCommand remote: remote, command: "free -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}'"
                 echo "Result: " + commandResult
             	
      }
