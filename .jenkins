@@ -16,7 +16,7 @@ pipeline {
              	def remote = [:]
             	remote.host = "${IP}"
             	remote.allowAnyHosts = true
-            	sshCommand remote: remote, command: "pwd"
+            	remote: remote, command: "pwd"
      }
   }
 } 
