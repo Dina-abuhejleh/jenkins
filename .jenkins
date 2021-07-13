@@ -18,8 +18,8 @@ pipeline {
             	remote.allowAnyHosts = true
                 remote.user = "${username}"
    		        remote.password = "${password}"
-  	            writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}' \nhostname \nw"
-                sshScript remote: remote, script: "tee ${env.BUILD_ID}.tar.gz"
+  	            writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}' | tee out.txt \nhostname | tee out.txt \nw | tee out.txt"
+                sshScript remote: remote, script: "${env.BUILD_ID}.tar.gz"
                 def memory = sshCommand remote: remote, command: "free -m | awk 'NR==2{printf \"%.2f \",\$3*100/\$2}'"
                 echo "Result: " + memory
                  if (Float.valueOf(memory) > 80.0) { 
