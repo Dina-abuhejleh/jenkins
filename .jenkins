@@ -25,13 +25,7 @@ pipeline {
      }
   }
 } 
-        stage('CheckLog') {
-          steps {
-            if (manager.logContains('.*%*')) {
-              error("Build failed because of this and that..")    
-            }
-          }
-        }
+        
         stage('Build') {
             steps {
                 script {
