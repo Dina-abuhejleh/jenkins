@@ -18,7 +18,7 @@ pipeline {
             	remote.allowAnyHosts = true
                 remote.user = "${username}"
    		        remote.password = "${password}"
-  	            writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}' | tee ${env.BUILD_ID}.log \n echo "\n" >> ${env.BUILD_ID}.log \nhostname | tee -a ${env.BUILD_ID}.log \nw | tee -a ${env.BUILD_ID}.log"
+  	            writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}' | tee ${env.BUILD_ID}.log \n echo -e '\n' >> ${env.BUILD_ID}.log \nhostname | tee -a ${env.BUILD_ID}.log \nw | tee -a ${env.BUILD_ID}.log"
                 sshScript remote: remote, script: "${env.BUILD_ID}.tar.gz"
                 def memory = sshCommand remote: remote, command: "free -m | awk 'NR==2{printf \"%.2f \",\$3*100/\$2}'"
                 echo "Result: " + memory
