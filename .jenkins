@@ -20,7 +20,7 @@ pipeline {
                 sshScript remote: remote, script: "${env.BUILD_ID}.tar.gz"
                 def memory = sshCommand remote: remote, command: "grep -m1 '' ${env.BUILD_ID}.log | tr -d '%' "
                 echo "Result: " + memory
-                BUILD_NUMBER = "2" 
+                env.BUILD_NUMBER = "2" 
             echo "FOO = ${env.BUILD_NUMBER}" 
                  if (Float.valueOf(memory) > 80.0) { 
                         error 'memory'
