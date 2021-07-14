@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('SSH') {
           steps {
-           script {                 
+           script {          
+                def inputFile = input message: 'Upload file', parameters: [file(name: 'global.properties')]
              	def remote = [:]
                 remote.name = "${IP}"
             	remote.host = "${IP}"
