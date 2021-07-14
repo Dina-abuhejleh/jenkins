@@ -1,5 +1,8 @@
 pipeline {
     agent any
+   parameters {
+    base64File 'THEFILE'
+  }
    environment {
         FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
     }
@@ -7,8 +10,9 @@ pipeline {
         stage('SSH') {
           steps {
            script {  
-                def inputFile = input message: 'Upload file', parameters: [file(name: 'globe.properties')]
-                writeFile(file: 'globe.properties', text: inputFile.readToString())
+                withFileParameter(name:'THEFILE', allowNoFile: true) {
+                  sh 'if [ -f "$THEFILE" ]; then cat $THEFILE; fi'
+        }
              	def remote = [:]
                 remote.name = "${IP}"
             	remote.host = "${IP}"
