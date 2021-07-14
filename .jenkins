@@ -59,10 +59,10 @@ pipeline {
         }
  }
     }
- //   post {
-   //  failure {
-     //    emailext body: 'Check console output at $memory to view the results.${BUILD_LOG, maxLines=100, escapeHtml=false}', 
-       //             to: "${EMAIL_TO}", 
-         //           subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
-     //}
+   post {
+   failure {
+        emailext body: 'Check console output at $memory to view the results.${BUILD_LOG, maxLines=100, escapeHtml=false}', 
+                    to: "${EMAIL_TO}", 
+                 subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+     }
     }}
