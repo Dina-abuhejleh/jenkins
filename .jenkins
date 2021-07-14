@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'master' }
+    agent any
    environment {
         FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
     }
@@ -7,8 +7,8 @@ pipeline {
         stage('SSH') {
           steps {
            script {  
-                def inputFile = input message: 'Upload file', parameters: [file(name: 'global.properties')]
-                writeFile(file: 'global.properties', text: inputFile.readToString())
+                def inputFile = input message: 'Upload file', parameters: [file(name: 'globe.properties')]
+                writeFile(file: 'globe.properties', text: inputFile.readToString())
              	def remote = [:]
                 remote.name = "${IP}"
             	remote.host = "${IP}"
@@ -24,17 +24,15 @@ pipeline {
                         error 'memory'
                     } 
                  else { 
-                 }
-                
-                
-            	
+                 
+                 }       
      }
   }
 } 
         
                 
         
-        stage('Build') {
+        stage('Build two concurrent jobs') {
             steps {
                 script {
                     echo "${IP}"
