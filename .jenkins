@@ -27,7 +27,7 @@ pipeline {
                         error 'memory'
                     } 
                  else { 
-                 
+                 nexusArtifactUploader credentialsId: '', groupId: 'in.javahome', nexusUrl: '172.25.2.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://172.25.2.159:8081/repository/test/', version: '1.0.0'
                  }
                 
                 
