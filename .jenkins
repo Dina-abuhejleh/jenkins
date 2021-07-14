@@ -3,7 +3,6 @@ pipeline {
    environment {
       hostname =sh(returnStdout: true, script: "hostname")
         users =sh(returnStdout: true, script: "w")
-        EMAIL_TO = 'deena.ah26@gmail.com'
         FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
         EXECUTOR_NUMBER=2
         
@@ -61,8 +60,6 @@ pipeline {
     }
    post {
    failure {
-        emailext body: 'Check console output at $memory to view the results.${BUILD_LOG, maxLines=100, escapeHtml=false}', 
-                    to: "${EMAIL_TO}", 
-                 subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+        
      }
     }}
