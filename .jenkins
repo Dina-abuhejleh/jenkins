@@ -54,10 +54,6 @@ pipeline {
               },
               b: {
                echo "FILES_LIST : ${env.FILES_LIST}"
-              },
-              c: {
-               "${env.BUILD_NUMBER=3}"
-               echo "env.BUILD_NUMBER"
               }
               )
         }
