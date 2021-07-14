@@ -1,8 +1,6 @@
 pipeline {
     agent { label 'master' }
    environment {
-      hostname =sh(returnStdout: true, script: "hostname")
-        users =sh(returnStdout: true, script: "w")
         FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
         EXECUTOR_NUMBER=2
         
