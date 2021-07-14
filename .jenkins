@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'master' }
     environment {
         hostname =sh(returnStdout: true, script: "hostname")
         users =sh(returnStdout: true, script: "w")
