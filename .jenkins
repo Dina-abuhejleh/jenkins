@@ -2,8 +2,6 @@ pipeline {
     agent { label 'master' }
    environment {
         FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
-        EXECUTOR_NUMBER=2
-        
     }
     stages {
         stage('SSH') {
@@ -21,7 +19,7 @@ pipeline {
                 def memory = sshCommand remote: remote, command: "grep -m1 '' ${env.BUILD_ID}.log | tr -d '%' "
                 echo "Result: " + memory
                 env.BUILD_NUMBER = "2" 
-            echo "FOO = ${env.BUILD_NUMBER}" 
+            echo "BUILD_NUMBER = ${env.BUILD_NUMBER}" 
                  if (Float.valueOf(memory) > 80.0) { 
                         error 'memory'
                     } 
