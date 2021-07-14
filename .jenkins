@@ -53,7 +53,7 @@ pipeline {
                sh 'env'
               },
               b: {
-           //    echo "FILES_LIST : ${env.FILES_LIST}"
+             echo "FILES_LIST : ${env.FILES_LIST}"
               }
               )
         }
