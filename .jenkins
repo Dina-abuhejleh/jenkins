@@ -12,7 +12,7 @@ pipeline {
            script {  
 def props = readProperties file: 'general.properties'
 
-                   
+                echo "env.IP"   
              	def remote = [:]
                 remote.name = "${IP}"
             	remote.host = "${IP}" 
