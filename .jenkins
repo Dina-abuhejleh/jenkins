@@ -28,7 +28,7 @@ pipeline {
                         error 'memory'
                     } 
                  else { 
-                 nexusArtifactUploader artifacts: [[artifactId: 'memory-usage', classifier: '', file: '${env.BUILD_ID}.tar.gz', type: 'tar']], credentialsId: 'nexus3', groupId: 'group.com', nexusUrl: '172.25.2.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://172.25.2.159:8081/repository/test/', version: '1'
+                 nexusArtifactUploader artifacts: [[artifactId: 'memory-usage', classifier: '', file: ${env.BUILD_ID}.tar.gz, type: 'tar']], credentialsId: 'nexus3', groupId: 'group.com', nexusUrl: '172.25.2.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://172.25.2.159:8081/repository/test/', version: '1'
                  
                  }       
      }
