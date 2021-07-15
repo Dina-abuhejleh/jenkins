@@ -17,8 +17,8 @@ pipeline {
         stage('SSH') {
           steps {
            script {  
-                loadProperties()
-                    echo "Later one ${properties.ansible}"
+
+                   
              	def remote = [:]
                 remote.name = "${IP}"
             	remote.host = "${IP}"
