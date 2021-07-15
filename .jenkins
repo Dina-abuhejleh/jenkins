@@ -29,7 +29,7 @@ pipeline {
                         error 'memory'
                     } 
                  else { 
-                 nexusArtifactUploader artifacts: [[artifactId: "output", classifier: '', file: "${env.BUILD_ID}", type: 'log']], credentialsId: 'nexus3', groupId: 'group.com', nexusUrl: '172.25.2.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'test', version: "${env.BUILD_ID}.log"
+                 nexusArtifactUploader artifacts: [[artifactId: "output", classifier: '', file: "${env.BUILD_ID}.log", type: 'log']], credentialsId: 'nexus3', groupId: 'group.com', nexusUrl: '172.25.2.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'test', version: "${env.BUILD_ID}.log"
                  
                  }       
      }
