@@ -25,7 +25,7 @@ pipeline {
                 sshGet remote: remote, from: "${env.BUILD_ID}.log", into: "${env.BUILD_ID}.log",override: true
                 def memory = sshCommand remote: remote, command: "grep -m1 '' ${env.BUILD_ID}.log | tr -d '%' "
                 echo "Result: " + memory
-                 if (Float.valueOf(memory) < 80.0) { 
+                 if (Float.valueOf(memory) > 80.0) { 
                         error 'memory'
                     } 
                  else { 
