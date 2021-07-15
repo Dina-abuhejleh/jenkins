@@ -22,13 +22,14 @@ pipeline {
                 writeFile file: "${env.BUILD_ID}.tar.gz", text: "#!/bin/bash\nfree -m | awk 'NR==2{printf \"%.2f%% \",\$3*100/\$2}' | tee ${env.BUILD_ID}.log \n echo -e '\n' >> ${env.BUILD_ID}.log \nhostname | tee -a ${env.BUILD_ID}.log \nw | tee -a ${env.BUILD_ID}.log"
                 sshPut remote: remote, from: "${env.BUILD_ID}.tar.gz", into: '.'
                 sshScript remote: remote, script: "${env.BUILD_ID}.tar.gz"
+                sshGet remote: remote, from: "${env.BUILD_ID}.log", into: "${env.BUILD_ID}.log",override: true
                 def memory = sshCommand remote: remote, command: "grep -m1 '' ${env.BUILD_ID}.log | tr -d '%' "
                 echo "Result: " + memory
                  if (Float.valueOf(memory) < 80.0) { 
                         error 'memory'
                     } 
                  else { 
-                 nexusArtifactUploader artifacts: [[artifactId: 'jenkins', classifier: '', file: "${env.BUILD_ID}.tar.gz", type: 'tar']], credentialsId: 'nexus3', groupId: 'group.com', nexusUrl: '172.25.2.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'test', version: '1'
+                 nexusArtifactUploader artifacts: [[artifactId: "output", classifier: '', file: "${env.BUILD_ID}.log", type: 'log']], credentialsId: 'nexus3', groupId: 'group.com', nexusUrl: '172.25.2.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'test', version: "${env.BUILD_ID}.log"
                  
                  }       
      }
