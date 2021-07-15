@@ -9,9 +9,7 @@ def loadProperties() {
 }
 pipeline {
     agent any
-   parameters {
-    base64File 'properties.txt'
-  }
+   
    environment {
         FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
     }
@@ -19,7 +17,8 @@ pipeline {
         stage('SSH') {
           steps {
            script {  
-                
+                loadProperties()
+                    echo "Later one ${properties.ansible}"
              	def remote = [:]
                 remote.name = "${IP}"
             	remote.host = "${IP}"
