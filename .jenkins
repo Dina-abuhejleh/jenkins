@@ -1,12 +1,5 @@
 properties = null
 
-def loadProperties() {
-    node {
-        checkout scm
-        properties = readProperties file: 'pipeline.properties'
-        echo "Immediate one ${properties.repo}"
-    }
-}
 pipeline {
     agent any
    
@@ -17,7 +10,7 @@ pipeline {
         stage('SSH') {
           steps {
            script {  
-
+def props = readProperties file: 'general.properties'
                    
              	def remote = [:]
                 remote.name = "${IP}"
