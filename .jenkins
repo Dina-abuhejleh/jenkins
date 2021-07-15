@@ -18,7 +18,7 @@ def password= props['password']
                    
              	def remote = [:]
                 remote.name = name || "${IP}"
-            	remote.host = host || "${IP}"
+            	remote.host = host 
             	remote.allowAnyHosts = true
                 remote.user = user || "${username}"
    		        remote.password = password || "${password}"
