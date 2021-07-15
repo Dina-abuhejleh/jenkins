@@ -36,7 +36,7 @@ def password= props['password']
                 def memory = sshCommand remote: remote, command: "grep -m1 '' ${env.BUILD_ID}.log | tr -d '%' "
                 echo "Result: " + memory
                  if (Float.valueOf(memory) > 80.0) { 
-                        error "${memory}"
+                        error "${memory}% memory usage"
                     } 
                  else { 
                  nexusArtifactUploader artifacts: [[artifactId: "output", classifier: '', file: "${env.BUILD_ID}.log", type: 'log']], credentialsId: 'nexus3', groupId: 'group.com', nexusUrl: '172.25.2.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'test', version: "${env.BUILD_ID}.log"
