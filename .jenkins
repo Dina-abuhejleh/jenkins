@@ -11,10 +11,10 @@ pipeline {
           steps {
            script {  
 def props = readProperties file: 'general.properties'
-def remote.name= props['name']
+def name= props['name']
                    
              	def remote = [:]
-                remote.name = "${IP}"
+                remote.name = name
             	remote.host = "${IP}"
             	remote.allowAnyHosts = true
                 remote.user = "${username}"
