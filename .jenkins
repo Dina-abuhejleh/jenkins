@@ -39,7 +39,7 @@ pipeline {
         stage('Build two concurrent jobs') {
             steps {
                 script {
-                    node('master&&slave') {
+                    node(label 'master && slave') {
                     sh ' sleep 10 '   
 }
                     
