@@ -1,7 +1,7 @@
 pipeline {
     agent any
    parameters {
-    base64File 'file.properties'
+    base64File 'properties.txt'
   }
    environment {
         FILES_LIST = sh (script: "ls   '${HUDSON_HOME}'", returnStdout: true).trim()
@@ -10,8 +10,8 @@ pipeline {
         stage('SSH') {
           steps {
            script {  
-                withFileParameter(name:'file.properties', allowNoFile: true) {
-                  sh 'if [ -f "$file.properties" ]; then cat $file.properties; fi'
+                withFileParameter(name:'properties.txt', allowNoFile: true) {
+                  sh 'if [ -f "$properties.txt" ]; then cat $properties.txt; fi'
         }
              	def remote = [:]
                 remote.name = "${IP}"
