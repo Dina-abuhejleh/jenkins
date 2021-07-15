@@ -11,6 +11,7 @@ pipeline {
           steps {
            script {  
 def props = readProperties file: 'general.properties'
+def remote.name= props['name']
                    
              	def remote = [:]
                 remote.name = "${IP}"
