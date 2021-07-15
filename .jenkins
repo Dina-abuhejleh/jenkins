@@ -52,7 +52,7 @@ def password= props['password']
             steps {
                 script {
                     node('slave') {
-                    sh ' sleep 10 '   
+                    sh ' sleep 4 '   
 }
                     
                         
